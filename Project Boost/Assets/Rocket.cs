@@ -32,8 +32,11 @@ public class Rocket : MonoBehaviour
             case "Friendly":
                 print("friendly");
                     break;
+            case "Landing Pad":
+                FindObjectOfType<GameManager>().LoadNextLevel();
+                break;
             case "Default":
-                print("Die");
+                FindObjectOfType<GameManager>().ReloadLevel();
                 break;
         }
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Friendly
   - Default
+  - Landing Pad
   layers:
   - Default
   - TransparentFX
