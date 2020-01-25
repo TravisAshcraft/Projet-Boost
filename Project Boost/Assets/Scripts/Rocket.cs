@@ -23,7 +23,8 @@ public class Rocket : MonoBehaviour
 
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
-    
+
+  
     private void Start()
     {
         myrigidbody = GetComponent<Rigidbody>();
@@ -33,9 +34,15 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RespondToRotateInput();
-        RespondToThrust();
+        if (state == State.Alive)
+        {
+            RespondToRotateInput();
+            RespondToThrust();
+        }
+      
     }
+
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -75,7 +82,13 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1);
+        int currentSceneInex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneInex + 1;
+        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+        SceneManager.LoadScene(nextSceneIndex);
         
     }
     
